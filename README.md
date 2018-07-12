@@ -63,12 +63,17 @@ fa_icon('camera-retro')
 fa_icon('camera-retro', style: 'color: Tomato')
 # => <i class="fas fa-camera-retro" style="color:Tomato"></i>
 
+fa_icon(:camera_retro, class: 'my-class')
+# => <i class="fas fa-camera-retro my-class"></i>
+
 fa_icon('camera-retro', class: 'my-class', text: 'Camera', size: '3x')
 # => <i class="fas fa-camera-retro my-class fa-3x"></i>
 # =>  <span class='fa5-text fa-3x'>Camera</span>
 
-fa_icon(:camera_retro, class: 'my-class')
-# => <i class="fas fa-camera-retro my-class"></i>
+fa_icon('camera-retro', text: 'Camera', appended: true)
+# => <span class='fa5-text appended'>Camera</span>
+# => <i class="fas fa-camera-retro"></i>
+
 ```
 
 You can also enhance accessibility by providing a description for screen readers. The default class is ```show-for-sr```, but can be customized with the ```sr_class``` attribute.
@@ -81,6 +86,7 @@ fa_icon(:camera_retro, sr_text: 'Camera Icon', sr_class: 'sr-only')
 # => <i class="fas fa-camera-retro"></i>
 # =>  <span class='sr-only'>Camera Icon</span>
 ```
+
 
 ### Solid, Regular, Light, Brands icon types
 In Font Awesome 5 there are several different types of icons. In font_awesome5_rails gem default icon type is ```solid```.

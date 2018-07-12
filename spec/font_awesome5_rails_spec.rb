@@ -100,6 +100,21 @@ describe FontAwesome5Rails do
       expect(fa_icon 'camera-retro', 'aria-hidden': true).to eq '<i class="fas fa-camera-retro" aria-hidden="true"></i>'
       expect(fa_icon 'camera-retro', aria: {hidden: true}).to eq '<i class="fas fa-camera-retro" aria-hidden="true"></i>'
     end
+
+    it 'should add screen reader text' do
+      expect(fa_icon 'camera-retro', sr_text: 'Camera').to have_tag('span', text: 'Camera', with: {class: 'show-for-sr'})
+      expect(fa_icon 'camera-retro', text: 'Take a picture', sr_text: 'Camera').to eq '<i class="fas fa-camera-retro"></i><span class="show-for-sr">Camera</span><span class="fa5-text">Take a picture</span>'
+    end
+
+    it 'should have a custom screen reader class' do
+      expect(fa_icon 'camera-retro', sr_text: 'Camera', sr_class: 'sr-only').to have_tag('span', text: 'Camera', with: {class: 'sr-only'})
+    end
+
+    it 'should be able to append the icon to the text' do
+      expect(fa_icon 'camera-retro', text: 'Camera', appended: true).to eq '<span class="fa5-text appended">Camera</span><i class="fas fa-camera-retro"></i>'
+      expect(fa_icon 'camera-retro', text: 'Take a picture', sr_text: 'Camera', appended: true).to eq '<span class="fa5-text appended">Take a picture</span><span class="show-for-sr">Camera</span><i class="fas fa-camera-retro"></i>'
+    end
+
   end
 
   describe 'fa_stacked_icon tags' do

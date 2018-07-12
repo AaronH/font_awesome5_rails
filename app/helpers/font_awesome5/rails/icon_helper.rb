@@ -9,9 +9,10 @@ module FontAwesome5
       def fa_icon(icon, options = {})
         parser = FaIconParser.new(icon, options)
 
-        fa_icon_tag(parser) +
-          (fa_text_tag(parser.text, parser, ['fa5-text', parser.sizes]) || '') +
-          (fa_sr_tag(parser) || '')
+        tags = [fa_icon_tag(parser), fa_sr_tag(parser)]
+        tags << fa_text_tag(parser.text, parser, ['fa5-text', parser.sizes, ('appended' if parser.appended?)])
+
+        (parser.appended? ? tags.reverse : tags).flatten.compact.sum
       end
 
       def fa_icon_tag(parser)
@@ -20,7 +21,7 @@ module FontAwesome5
 
       def fa_text_tag(text, parser, _classes = nil )
         unless text.blank?
-          content_tag(:span, text, class: [*_classes].flatten.compact, style: parser.style)
+          content_tag(:span, text, class: [*_classes].flatten.reject(&:blank?), style: parser.style)
         end
       end
 
