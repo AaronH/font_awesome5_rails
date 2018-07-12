@@ -65,10 +65,21 @@ fa_icon('camera-retro', style: 'color: Tomato')
 
 fa_icon('camera-retro', class: 'my-class', text: 'Camera', size: '3x')
 # => <i class="fas fa-camera-retro my-class fa-3x"></i>
-# =>  <span>Camera</span>
+# =>  <span class='fa5-text fa-3x'>Camera</span>
 
 fa_icon(:camera_retro, class: 'my-class')
 # => <i class="fas fa-camera-retro my-class"></i>
+```
+
+You can also enhance accessibility by providing a description for screen readers. The default class is ```show-for-sr```, but can be customized with the ```sr_class``` attribute.
+```ruby
+fa_icon(:camera_retro, sr_text: 'Camera Icon')
+# => <i class="fas fa-camera-retro"></i>
+# =>  <span class='show-for-sr'>Camera Icon</span>
+
+fa_icon(:camera_retro, sr_text: 'Camera Icon', sr_class: 'sr-only')
+# => <i class="fas fa-camera-retro"></i>
+# =>  <span class='sr-only'>Camera Icon</span>
 ```
 
 ### Solid, Regular, Light, Brands icon types

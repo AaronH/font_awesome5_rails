@@ -8,11 +8,26 @@ module FontAwesome5
 
       def fa_icon(icon, options = {})
         parser = FaIconParser.new(icon, options)
-        if parser.text.nil?
-          content_tag(:i, nil, class: parser.classes, **parser.attrs)
-        else
-          content_tag(:i, nil, class: parser.classes, **parser.attrs) +
-          content_tag(:span, parser.text, class: "fa5-text#{' ' unless parser.sizes.blank?}#{parser.sizes}", style: parser.style)
+
+        fa_icon_tag(parser) +
+          (fa_text_tag(parser.text, parser, ['fa5-text', parser.sizes]) || '') +
+          (fa_sr_tag(parser) || '')
+      end
+
+      def fa_icon_tag(parser)
+        content_tag(:i, nil, class: parser.classes, **parser.attrs)
+      end
+
+      def fa_text_tag(text, parser, _classes = nil )
+        unless text.blank?
+          content_tag(:span, text, class: [*_classes].flatten.compact, style: parser.style)
+        end
+      end
+
+      def fa_sr_tag(parser)
+        unless parser.sr_text.blank?
+          text = parser.sr_text.is_a?(String) ? parser.sr_text : parser.text
+          fa_text_tag text, parser, parser.sr_class
         end
       end
 
