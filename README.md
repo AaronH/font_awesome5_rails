@@ -14,7 +14,7 @@ Keep track of changes in [Changelog](https://github.com/tomkra/font_awesome5_rai
 **[Instalation](#instalation)** <br />
 **[Usage](#usage)** <br />
   - **[Basic usage](#basic-usage)** <br />
-  - **[Solid, Regular, Light, Brand icon types](#solid-regular-light-brand-icon-types)** <br />
+  - **[Solid, Regular, Light, Brands icon types](#solid-regular-light-brands-icon-types)** <br />
   - **[Animations and data attributes](#animations-and-data-attributes)** <br />
   - **[Layered and Stacked icons](#layered-and-stacked-icons)** <br />
 
@@ -59,19 +59,19 @@ Gem provides FontAwesome icons through helper. In your views just call `fa_icon`
 ```ruby
 fa_icon('camera-retro')
 # => <i class="fas fa-camera-retro"></i>
- 
+
 fa_icon('camera-retro', style: 'color: Tomato')
 # => <i class="fas fa-camera-retro" style="color:Tomato"></i>
-  
+
 fa_icon('camera-retro', class: 'my-class', text: 'Camera', size: '3x')
 # => <i class="fas fa-camera-retro my-class fa-3x"></i>
 # =>  <span>Camera</span>
- 
+
 fa_icon(:camera_retro, class: 'my-class')
 # => <i class="fas fa-camera-retro my-class"></i>
 ```
 
-### Solid, Regular, Light, Brand icon types
+### Solid, Regular, Light, Brands icon types
 In Font Awesome 5 there are several different types of icons. In font_awesome5_rails gem default icon type is ```solid```.
 If you want to use different icon style you can do this through ```type``` attribute.
 
@@ -80,33 +80,33 @@ If you want to use different icon style you can do this through ```type``` attri
 | Solid         | :fas  |:solid  |
 | Regular       | :far  |:regular|
 | Light         | :fal  |:light  |
-| Brand         | :fab  |:brand  | 
+| Brands        | :fab  |:brands |
 
 
 ```ruby
 fa_icon('camera-retro', type: :solid) #Default
 # => <i class="fas fa-camera-retro"></i>
- 
+
 fa_icon('camera-retro', type: :regular)
 # => <i class="far fa-camera-retro"></i>
-  
+
 fa_icon('camera-retro', type: :light)
 # => <i class="fal fa-camera-retro"></i>
- 
-fa_icon('camera-retro', type: :brand)
+
+fa_icon('camera-retro', type: :brands)
 # => <i class="fab fa-camera-retro"></i>
-     
+
 fa_icon('camera-retro', type: :fab)
 # => <i class="fab fa-camera-retro"></i>
-     
-```  
+
+```
 
 ### Animations and data attributes
 FontAwesome 5 provides new animations and data attributes. Here are some examples how to use them:
 ```ruby
 fa_icon('camera-retro', animation: 'spin')
 # => <i class="fas fa-camera-retro fa-spin"></i>
- 
+
 fa_icon('camera-retro', data: {'fa-transform': 'rotate-90'})
 # => <i class="fas fa-camera-retro" data-fa-transform="rotate-90"></i>
 
@@ -126,7 +126,7 @@ Following ```fa_layered_icon``` examples are written in ```haml```.
   = fa_icon 'circle'
 # => <span class="fa-layers fa-fw">
 # =>   <i class="fas fa-circle"></i>
-# => </span>  
+# => </span>
 
 = fa_layered_icon style: 'background: MistyRose', size: '4x' do
   = fa_icon 'circle', style: 'color: Tomato'
@@ -135,7 +135,7 @@ Following ```fa_layered_icon``` examples are written in ```haml```.
 # =>   <span class="fa-layers fa-fw" style="background: MistyRose">
 # =>     <i class="fas fa-circle" style="color: Tomato"></i>
 # =>     <i class="fas fa-times fa-inverse" data-fa-transform="shrink-6"></i>
-# =>   </span> 
+# =>   </span>
 # => </div>
 
 = fa_layered_icon aligned: :false do
@@ -145,7 +145,7 @@ Following ```fa_layered_icon``` examples are written in ```haml```.
 # => <span class="fa-layers">
 # =>   <i class="fas fa-circle"></i>
 # =>   <span class="fa-layers-counter">1,419</span>
-# => </span>  
+# => </span>
 ```
 
 #### Stacked icon examples
@@ -181,7 +181,7 @@ fa_stacked_icon('camera', base: 'circle', type: :fas, base_type: :fab)
 From version ```0.2.3``` you can include icons as images in your views.
 ```ruby
 image_tag('fa5/solid/camera.svg')
-image_tag('fa5/brand/facebook.svg')
+image_tag('fa5/brands/facebook.svg')
 image_tag('fa5/regular/bell.svg', width: '100px', class: 'my-img')
 ```
 
@@ -190,7 +190,7 @@ More examples can be found in specs.
 More animation and data attributes can be found on [FontAwesome documentation](https://fontawesome.com/how-to-use/svg-with-js).
 
 ## FontAwesome 5 Pro icons
-Due to licence policy this gem pack only free FA5 icons. However ```fa_icon``` helper support all types of icons. If you buyed FA5 Pro icons and want to use helpers provided by this gem it's possible.   
+Due to licence policy this gem pack only free FA5 icons. However ```fa_icon``` helper support all types of icons. If you buyed FA5 Pro icons and want to use helpers provided by this gem it's possible.
 1. Add this gem to your ```Gemfile``` without including anything to ```application.css``` and ```application.js```.
 2. Download your FA5 pro icons and unpack them.
 3. Now you will have to manualy include all FA5 files you want to use to your ```/assets``` folder.

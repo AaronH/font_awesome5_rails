@@ -7,7 +7,7 @@ module ParseMethods
         "far"
       when "fal", "light"
         "fal"
-      when "fab", "brand"
+      when "fab", "brands"
         "fab"
       else
         "fas"

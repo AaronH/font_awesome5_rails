@@ -47,7 +47,7 @@ describe FontAwesome5Rails do
       expect(fa_icon 'camera-retro', type: :solid).to eq '<i class="fas fa-camera-retro"></i>'
       expect(fa_icon 'camera-retro', type: :regular).to eq '<i class="far fa-camera-retro"></i>'
       expect(fa_icon 'camera-retro', type: :light).to eq '<i class="fal fa-camera-retro"></i>'
-      expect(fa_icon 'camera-retro', type: :brand).to eq '<i class="fab fa-camera-retro"></i>'
+      expect(fa_icon 'camera-retro', type: :brands).to eq '<i class="fab fa-camera-retro"></i>'
     end
 
     it 'should return correct class tags' do
@@ -85,7 +85,7 @@ describe FontAwesome5Rails do
     end
 
     it 'should return correct tags with symbols' do
-      expect(fa_icon :facebook, type: :brand).to eq '<i class="fab fa-facebook"></i>'
+      expect(fa_icon :facebook, type: :brands).to eq '<i class="fab fa-facebook"></i>'
       expect(fa_icon :camera_retro).to eq '<i class="fas fa-camera-retro"></i>'
       expect(fa_icon [:camera_retro, :circle]).to eq '<i class="fas fa-camera-retro fa-circle"></i>'
     end
@@ -168,5 +168,5 @@ describe FontAwesome5Rails do
           .to eq '<span class="fa-layers fa-fw" title="LayeredIcon" style="background: MistyRose"><i class="fas fa-circle"></i></span>'
     end
   end
-  
+
 end
